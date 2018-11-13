@@ -12,36 +12,32 @@ import javax.persistence.Id;
 public class Book {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id;
+	@Column(name="BookID")
+	private Integer BookId;
 	
-	@Column(nullable=false)
+	public Integer getBookId() {
+		return BookId;
+	}
+
+	public void setBookId(Integer bookId) {
+		BookId = bookId;
+	}
+
+	@Column(nullable=false,name="ImageID")
 	private Integer ImageId;
 	
-	@Column(nullable=false)
+	@Column(nullable=false,name="TeacherID")
 	private Integer TeacherId;
 	
-	@Column(nullable=false)
+	@Column(nullable=false,name="AuthorFirstName")
 	private String AuthorFirstName;
 	
-	@Column(nullable=false)
+	@Column(nullable=false,name="AuthorLastName")
 	private String AuthorLastName;
 	
-	@Column(nullable=false)
+	@Column(nullable=false,name="Title")
 	private String Title;
 
-	/**
-	 * @return the id
-	 */
-	public Integer getId() {
-		return id;
-	}
-
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	/**
 	 * @return the imageId
