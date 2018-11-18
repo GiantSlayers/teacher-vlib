@@ -31,9 +31,12 @@ public class PeriodController {
 		
 		p.setDueBack(due.getTime());
 		
-		periodRepository.save(p);
-		
-		return p;
+		return periodRepository.save(p);
+	}
+	
+	@GetMapping("/periods")
+	public Iterable<Period> getList(){
+		return periodRepository.findAll();
 	}
 }
 

@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 
 @Entity
@@ -28,8 +30,28 @@ public class Period {
 
 	private Date dueBack;
 	
-	private Integer studentId;
+	@OneToOne
+	@JoinColumn(name="studentId")
+	private Student student;
 	
+	@OneToOne
+	@JoinColumn(name="bookId")
+	private Book book;
+	
+	/**
+	 * @return the book
+	 */
+	public Book getBook() {
+		return book;
+	}
+
+	/**
+	 * @param book the book to set
+	 */
+	public void setBook(Book book) {
+		this.book = book;
+	}
+
 	public Date getCheckoutDate() {
 		return checkoutDate;
 	}
@@ -46,12 +68,20 @@ public class Period {
 		this.dueBack = dueBack;
 	}
 
-	public Integer getStudentId() {
-		return studentId;
+	/**
+	 * @return the student
+	 */
+	public Student getStudent() {
+		return student;
 	}
 
-	public void setStudentId(Integer studentId) {
-		this.studentId = studentId;
+	/**
+	 * @param student the student to set
+	 */
+	public void setStudent(Student student) {
+		this.student = student;
 	}
+
+	
 	
 }
