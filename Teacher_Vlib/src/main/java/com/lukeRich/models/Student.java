@@ -10,31 +10,33 @@ import javax.persistence.Id;
 
 @Entity
 public class Student {
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer id;
 	
-	@Column(nullable=false)
+	@Id
+	@Column(name="StudentID")
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer StudentId;
+	
+	@Column(nullable=false,name="FirstName")
 	private String FirstName;
 	
-	@Column(nullable=false)
+	@Column(nullable=false,name="LastName")
 	private String LastName;
 	
-	@Column(nullable=false)
+	@Column(nullable=false,name="TeacherID")
 	private Integer TeacherId;
 
 	/**
 	 * @return the id
 	 */
-	public Integer getId() {
-		return id;
+	public Integer getStudentId() {
+		return StudentId;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(Integer id) {
-		this.id = id;
+	public void setStudentId(Integer id) {
+		this.StudentId = id;
 	}
 
 	/**
