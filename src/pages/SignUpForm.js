@@ -50,10 +50,7 @@ class SignUpForm extends Component {
         <div className="FormCenter">
 
         <h2>Books In Classroom Library:</h2>
-            {this.state.books.map(book => {
-                return <p key={book.bookId}>{book.title} by {book.authorFirstName} {book.authorLastName}
-                <input className="BookSelect__Checkbox" type="checkbox" name="bookSelect" value={this.state.bookSelect} onChange={this.handleChange} /></p>;
-            })}
+            
             <form onSubmit={this.handleSubmit} className="FormFields">
               <div className="FormField">
                 <label className="FormField__Label" htmlFor="name">Full Name</label>

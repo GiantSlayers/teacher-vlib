@@ -10,7 +10,8 @@ class SignInForm extends Component {
             email: '',
             password: '',
             student: [],
-            studentSelect: true
+            books: [],
+            checkoutSaved: false
 
         };
 
@@ -24,12 +25,17 @@ class SignInForm extends Component {
             .then(res => {
                 this.setState({student:res.data});
             })
+        axios.get('/books')
+            .then(res => {
+                this.setState({books:res.data});
+            })    
     }
 
     handleChange(e) {
         let target = e.target;
-        let value = target.type === 'checkbox' ? target.checked : target.value;
+        let value = target.value;
         let name = target.name;
+        
 
         this.setState({
           [name]: value
@@ -41,18 +47,36 @@ class SignInForm extends Component {
 
         console.log('The form was submitted with the following data:');
         console.log(this.state);
+
+        axios.post("/period", {
+            "student": {"studentId":this.state.chosenStudent},
+            "book":{"bookId":this.state.chosenBook}
+        })
+        .then(res => {
+            console.log(res.data);
+            this.setState({checkoutSaved : true});    
+        })
     }
 
     render() {
+        if(this.state.checkoutSaved){
+            return <p>Book Checked Out, Due Back In 4 Weeks.</p>
+        };
         return (
         <div className="FormCenter">
             <h2>Select Student To Check Out A Book:</h2>
-            
-            {this.state.student.map(student => {
-                return <p key={student.studentId}>{student.firstName} {student.lastName}
-                <input className="StudentSelect__Radio" type="radio" name="studentSelect" value={this.state.studentSelect} onChange={this.handleChange} /></p>;
+            <form onSubmit={this.handleSubmit} className="FormFields">
+            <select name="chosenStudent" onChange={this.handleChange} className="FormField__Select">
+                <option value="">Please Choose A Student</option>
+                {this.state.student.map(student => {
+                return <option value={student.studentId} key={student.studentId}>{student.firstName} {student.lastName} </option>;
             })}
-            <form onSubmit={this.handleSubmit} className="FormFields" onSubmit={this.handleSubmit}>
+            </select>
+            {this.state.books.map(book => {
+                return <p key={book.bookId}>{book.title} by {book.authorFirstName} {book.authorLastName}
+                <input className="BookSelect__Checkbox" type="radio" name="chosenBook" value={book.bookId} onChange={this.handleChange} /></p>;
+            })}
+            
             <div className="FormField">
                 <label className="FormField__Label" htmlFor="email">E-Mail Address</label>
                 <input type="email" id="email" className="FormField__Input" placeholder="Enter your email" name="email" value={this.state.email} onChange={this.handleChange} />
@@ -64,7 +88,7 @@ class SignInForm extends Component {
               </div>
 
               <div className="FormField">
-                  <Link to="/" type="button" className="FormField__Button mr-20">Check Out A Book </Link> <Link to="/" className="FormField__Link">Create an account</Link>
+                  <button type="submit" className="FormField__Button mr-20"> Check Out A Book </button> <Link to="/" className="FormField__Link">Create an account</Link>
               </div>
             </form>
           </div>
