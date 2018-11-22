@@ -6,13 +6,15 @@
 
 .App__Aside {
   width: 50%;
-  background-color: #66DAC7;
+  background-color: white;
+  background: url('TeacherLogo.jpg') no-repeat scroll center center transparent;
+  background: url('TeacherLogo.jpg') no-repeat scroll center top/cover transparent;
 }
 
 
 .App__Form {
   width: 50%;
-  background-color: #2E4158;
+  background-color: #1068DD;
   padding: 25px 40px;
   overflow: auto;
 }

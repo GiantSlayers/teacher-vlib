@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from  'axios';
 
-class SignInForm extends Component {
+class CheckOutForm extends Component {
     constructor() {
         super();
 
@@ -58,9 +58,17 @@ class SignInForm extends Component {
         })
     }
 
+    refreshState = () => {
+        this.setState({checkoutSaved : false});
+    }
+
     render() {
         if(this.state.checkoutSaved){
-            return <p>Book Checked Out, Due Back In 4 Weeks.</p>
+            return (
+            <div>
+                <p>Book Checked Out, Due Back In 4 Weeks.</p>
+                <button className="FormField__Button mr-20" onClick={this.refreshState}> Check Out A Book </button>
+            </div>)
         };
         return (
         <div className="FormCenter">
@@ -96,5 +104,5 @@ class SignInForm extends Component {
     }
 }
 
-export default SignInForm;
+export default CheckOutForm;
 
