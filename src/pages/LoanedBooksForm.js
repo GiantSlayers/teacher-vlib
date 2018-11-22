@@ -57,9 +57,6 @@ class LoanedBooksForm extends Component {
             
             })}
 
-              <div className="FormField">
-                  <button className="FormField__Button mr-20">Check Out</button>
-              </div>
             
           </div>
         );

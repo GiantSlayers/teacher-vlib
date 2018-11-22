@@ -17,13 +17,13 @@ class App extends Component {
           </div>
           <div className="App__Form">
             <div className="PageSwitcher">
-                <NavLink to="/check-out" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Students</NavLink>
-                <NavLink exact to="/" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Book List</NavLink>
+                <NavLink to="/check-out" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Check Out</NavLink>
+                <NavLink exact to="/" activeClassName="PageSwitcher__Item--Active" className="PageSwitcher__Item">Books On Loan</NavLink>
               </div>
 
               <div className="FormTitle">
-                  <NavLink to="/check-out" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Students</NavLink> | 
-                  <NavLink exact to="/" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Book List</NavLink>
+                  <NavLink to="/check-out" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Check Out</NavLink> | 
+                  <NavLink exact to="/" activeClassName="FormTitle__Link--Active" className="FormTitle__Link">Books On Loan</NavLink>
               </div>
 
 

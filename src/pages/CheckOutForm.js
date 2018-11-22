@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import axios from  'axios';
 
 class CheckOutForm extends Component {
@@ -84,19 +83,9 @@ class CheckOutForm extends Component {
                 return <p key={book.bookId}>{book.title} by {book.authorFirstName} {book.authorLastName}
                 <input className="BookSelect__Checkbox" type="radio" name="chosenBook" value={book.bookId} onChange={this.handleChange} /></p>;
             })}
-            
-            <div className="FormField">
-                <label className="FormField__Label" htmlFor="email">E-Mail Address</label>
-                <input type="email" id="email" className="FormField__Input" placeholder="Enter your email" name="email" value={this.state.email} onChange={this.handleChange} />
-              </div>
 
               <div className="FormField">
-                <label className="FormField__Label" htmlFor="password">Password</label>
-                <input type="password" id="password" className="FormField__Input" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange} />
-              </div>
-
-              <div className="FormField">
-                  <button type="submit" className="FormField__Button mr-20"> Check Out A Book </button> <Link to="/" className="FormField__Link">Create an account</Link>
+                  <button type="submit" className="FormField__Button mr-20"> Check Out A Book </button>
               </div>
             </form>
           </div>
