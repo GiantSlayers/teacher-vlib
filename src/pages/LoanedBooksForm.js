@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import axios from  'axios';
 
 class LoanedBooksForm extends Component {
@@ -7,10 +6,6 @@ class LoanedBooksForm extends Component {
         super();
 
         this.state = {
-            email: '',
-            password: '',
-            name: '',
-            hasAgreed: false,
             books: [],
             bookSelect: true,
             periods: []
@@ -24,7 +19,7 @@ class LoanedBooksForm extends Component {
     componentDidMount = () => {
         axios.get('/periods')
             .then(res => {console.log(res.data)
-                this.setState({periods:res.data});
+                this.setState({periods:res.data.reverse().slice(0,10)});
             })
     }
 
@@ -51,12 +46,16 @@ class LoanedBooksForm extends Component {
         <div className="FormCenter">
 
         <h2>Books Checked Out:</h2>
-            
-        {this.state.periods.map(period => {
-                return <p key={period.transactionId}>{period.book.title} checked out by {period.student.firstName} {period.student.lastName}</p>
+    
+        <ol>
+            {this.state.periods.map(period => {
+                return <li> 
+                    <p key={period.transactionId}>{period.book.title} <em> 
+                    Checked Out By: {period.student.firstName} {period.student.lastName}</em> </p> 
+                    </li>
             
             })}
-
+        </ol>
             
           </div>
         );

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter as Router, Route, Link, NavLink } from 'react-router-dom';
+import { HashRouter as Router, Route, NavLink } from 'react-router-dom';
 import LoanedBooksForm from './pages/LoanedBooksForm';
 import CheckOutForm from './pages/CheckOutForm';
 

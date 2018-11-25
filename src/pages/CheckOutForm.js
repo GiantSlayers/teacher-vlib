@@ -6,8 +6,6 @@ class CheckOutForm extends Component {
         super();
 
         this.state = {
-            email: '',
-            password: '',
             student: [],
             books: [],
             checkoutSaved: false
@@ -65,8 +63,8 @@ class CheckOutForm extends Component {
         if(this.state.checkoutSaved){
             return (
             <div>
-                <p>Book Checked Out, Due Back In 4 Weeks.</p>
-                <button className="FormField__Button mr-20" onClick={this.refreshState}> Check Out A Book </button>
+                <p>Book Checked Out, Due Back In 2 Weeks.</p>
+                <button className="FormField__Button" onClick={this.refreshState}> Check Out A Book </button>
             </div>)
         };
         return (
@@ -79,13 +77,15 @@ class CheckOutForm extends Component {
                 return <option value={student.studentId} key={student.studentId}>{student.firstName} {student.lastName} </option>;
             })}
             </select>
+            <h2>Select Book To Check Out:</h2>
+            <ol>
             {this.state.books.map(book => {
-                return <p key={book.bookId}>{book.title} by {book.authorFirstName} {book.authorLastName}
-                <input className="BookSelect__Checkbox" type="radio" name="chosenBook" value={book.bookId} onChange={this.handleChange} /></p>;
+                return <li> <p key={book.bookId}>{book.title}  <em> by {book.authorFirstName} {book.authorLastName} </em>
+                <input className="BookSelect__Checkbox" type="radio" name="chosenBook" value={book.bookId} onChange={this.handleChange} /></p> </li>;
             })}
-
+            </ol>
               <div className="FormField">
-                  <button type="submit" className="FormField__Button mr-20"> Check Out A Book </button>
+                  <button type="submit" className="FormField__Button"> Check Out A Book </button>
               </div>
             </form>
           </div>
